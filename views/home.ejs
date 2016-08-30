@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TodoApp with Angular&Sails Js</title>
+
+		<!-- Viewport mobile tag for sensible mobile support -->
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	    <!--STYLES-->
+    	<link rel="stylesheet" href="/styles/bootstrap-3.3.7-dist/bootstrap-theme.min.css">
+    	<link rel="stylesheet" href="/styles/bootstrap-3.3.7-dist/bootstrap.min.css">
+    	<link rel="stylesheet" href="/styles/custom.css">
+    	<link rel="stylesheet" href="/styles/importer.css">
+    	<!--STYLES END-->
+	</head>
+	<body ng-app="TodoModule" ng-controller="TodoController" ng-cloak>
+		<div class="box m-top-15">
+			<h3 class="center">ToDo App</h3>
+		    <form name="todoForm" novalidate>
+		    	<div class="form-group" ng-class="{ 'has-error': todoForm.name.$invalid }" >
+		        	<label class="control-label">Add ToDo</label>
+		        	<input type="text" class="form-control" name="name" ng-model="user.task" required placeholder="e.g Need to do call @6pm" />
+		      	</div>
+		      	<button class="btn btn-primary" ng-click="save()">Add</button>
+		      	<button class="btn btn-link" ng-click="reset()">Reset</button>
+		    </form>
+		</div>
+		<div class="box m-top-15">
+		    <div class="box" ng-show="noListFound">No list found</div>
+		    <div class="box-hor" ng-show="!noListFound" ng-repeat="listObj in todoArray | orderBy: '-createdAt'">
+		    	<button type="button" class="close" ng-click="delete(listObj.id)" >&times;</button>
+		    	<p><span class="txt-heading">CreatedAt:</span> {{listObj.createdAt}}</p>
+		    	<p><span class="txt-heading">Task:</span> {{listObj.todo}}</p>
+		    </div>
+		</div>
+
+		<!--SCRIPTS-->
+		<script src="/js/dependencies/sails.io.js"></script>
+		<script src="/js/dependencies/angular.min.js"></script>
+		<script src="/js/public/todo/TodoModule.js"></script>
+		<script src="/js/public/todo/TodoController.js"></script>
+		<!--SCRIPTS END-->
+	</body>
+</html>
