@@ -10,4 +10,4 @@ a [Sails](http://sailsjs.org) application
 	3. Angularjs basic like module, controller, services and $scope
 	4. SailsJs localDiskDb usage and many more ..:)
 
-![alt tag](https://github.com/kadhiresan/todoApp-sailsJs/blob/master/assets/images/sailsjs-todo-app.png)
+![alt tag](https://github.com/kadhiresan/todoApp-sailsJs/blob/master/assets/images/sailsjs-todo-app1.png)

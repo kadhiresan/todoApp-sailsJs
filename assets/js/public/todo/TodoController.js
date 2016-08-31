@@ -49,7 +49,39 @@ myApp.controller('TodoController', ['$scope','$http', function($scope, $http) {
 		    console.log("getMyList errorCallback==", response);
 		});
 	};
-	$scope.getMyList();
+
+	$scope.edit = function(taskID) {
+		// Simple GET request:
+		$http({
+		  	method: 'GET',
+		  	url: '/todo/'+taskID
+		}).then(function successCallback(response) {
+		    // when the response is available
+		    if(response.data){
+		    	$scope.eidtTaskID = response.data.id;
+		    	$scope.eidtTask = response.data.todo;
+		    }else{
+		    	$scope.eidtTask = "";
+		    }
+		}, function errorCallback(response) {
+		    // called asynchronously if an error occurs or server returns response with an error status.
+		    console.log("delete errorCallback==", response);
+		});
+	};
+
+	$scope.update = function() {
+		// Simple PUT request:
+		$http({
+		  	method: 'PUT',
+		  	url: '/todo/update',
+		  	data: {id: $scope.eidtTaskID, task: $scope.eidtTask}
+		}).then(function successCallback(response) {
+			$scope.getMyList();
+		}, function errorCallback(response) {
+		    // called asynchronously if an error occurs or server returns response with an error status.
+		    console.log("update errorCallback==", response);
+		});
+	};
 
 	$scope.delete = function(taskID) {
 		// Simple PUT request:
@@ -58,13 +90,14 @@ myApp.controller('TodoController', ['$scope','$http', function($scope, $http) {
 		  	url: '/todo',
 		  	data: {id: taskID}
 		}).then(function successCallback(response) {
-		    // when the response is available
-		    console.log("delete successCallback==", response);
 		    $scope.getMyList();
 		}, function errorCallback(response) {
 		    // called asynchronously if an error occurs or server returns response with an error status.
 		    console.log("delete errorCallback==", response);
 		});
 	};
+
+	///Init
+	$scope.getMyList();
 
 }]);

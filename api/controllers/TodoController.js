@@ -33,7 +33,6 @@ module.exports = {
 	deleteList: function (req, res) {
 		var taskID = req.param('id');
 		if(taskID && taskID !== undefined){
-			sails.log("deleteList= ", taskID);
 			Todo.destroy({id: taskID}, function(err, resObj){
 				if(err){
 					res.negotiate(err);
@@ -41,11 +40,20 @@ module.exports = {
 					res.send(resObj);
 				}
 			});
+		}
+	},
 
-			// // remove 
-			// Todo.destroy({id: taskID}).then(function(u){
-			//     console.log(u); // the Todo was remove successfully 
-			// });
+	updateList: function (req, res) {
+		var taskID = req.param('id');
+		var task = req.param('task');
+		if(taskID && taskID !== undefined && task && task !== undefined){
+			Todo.update({id: taskID}, {todo: task}, function(err, resObj){
+				if(err){
+					res.negotiate(err);
+				}else{
+					res.send(resObj);
+				}
+			});
 		}
 	}
 };

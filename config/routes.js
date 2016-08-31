@@ -35,10 +35,11 @@ module.exports.routes = {
   // '/': {
   //   view: 'homepage'
   // }
-  'GET /': { view: 'home'},
-  'POST /add': 'TodoController.add',
-  'GET /todo': 'TodoController.getMyToDOList',
-  'PUT /todo': 'TodoController.deleteList',
+  'GET /'            : { view: 'home'},
+  'POST /add'        : 'TodoController.add',
+  'GET /todo'        : 'TodoController.getMyToDOList',
+  'PUT /todo'        : 'TodoController.deleteList',
+  'PUT /todo/update' : 'TodoController.updateList',
 
   /***************************************************************************
   *                                                                          *

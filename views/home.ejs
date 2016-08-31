@@ -5,7 +5,8 @@
 
 		<!-- Viewport mobile tag for sensible mobile support -->
 	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+		
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 	    <!--STYLES-->
     	<link rel="stylesheet" href="/styles/bootstrap-3.3.7-dist/bootstrap-theme.min.css">
     	<link rel="stylesheet" href="/styles/bootstrap-3.3.7-dist/bootstrap.min.css">
@@ -28,15 +29,38 @@
 		<div class="box m-top-15">
 		    <div class="box" ng-show="noListFound">No list found</div>
 		    <div class="box-hor" ng-show="!noListFound" ng-repeat="listObj in todoArray | orderBy: '-createdAt'">
-		    	<button type="button" class="close" ng-click="delete(listObj.id)" >&times;</button>
-		    	<p><span class="txt-heading">CreatedAt:</span> {{listObj.createdAt}}</p>
+		    	<span data-toggle="modal" data-target="#myModal" ng-click="edit(listObj.id)"><i class="fa fa-edit"></i></span>
+		    	<button type="button" class="close" ng-click="delete(listObj.id)">&times;</button>
+		    	<p><span class="txt-heading">CreatedAt:</span> {{listObj.createdAt | date:'d/M/yy h:mm a'}}</p>
 		    	<p><span class="txt-heading">Task:</span> {{listObj.todo}}</p>
 		    </div>
+		</div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Update the Task:</h4>
+					</div>
+					<div class="modal-body">
+						<input type="hidden" class="form-control" name="id" ng-model="eidtTaskID"/>
+						<input type="text" class="form-control" name="name" ng-model="eidtTask" required placeholder="e.g Need to do call @6pm" />
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="update()">Update</button>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<!--SCRIPTS-->
 		<script src="/js/dependencies/sails.io.js"></script>
+		<script src="/js/dependencies/jquery-3.1.0.js"></script>
 		<script src="/js/dependencies/angular.min.js"></script>
+		<script src="/js/dependencies/bootstrap.min.js"></script>
 		<script src="/js/public/todo/TodoModule.js"></script>
 		<script src="/js/public/todo/TodoController.js"></script>
 		<!--SCRIPTS END-->
