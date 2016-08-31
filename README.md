@@ -3,6 +3,13 @@
 a [Sails](http://sailsjs.org) application
 # todoApp-sailsJs
 
+**Tips**
+
+	1. Do a git clone
+	2. Move to the folder
+	3. DO npm install
+	4. Start debugging
+
 **what you will learn**
 
 	1. SailsJs basic api's creation
