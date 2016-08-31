@@ -11,3 +11,4 @@ a [Sails](http://sailsjs.org) application
 	4. SailsJs localDiskDb usage and many more ..:)
 
 ![_config.yml]({{ site.baseurl }}/images/Screenshot.png)
+![alt tag](https://github.com/kadhiresan/todoApp-sailsJs/blob/master/assets/images/Screenshot.png)
