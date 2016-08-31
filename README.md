@@ -4,11 +4,11 @@ a [Sails](http://sailsjs.org) application
 # todoApp-sailsJs
 
 **Tips**
-	0. I am assuming you already installed node js and sails js
-	1. Do a git clone
-	2. Move to the folder
-	3. DO npm install
-	4. Start debugging
+	1. I am assuming you already installed node js and sails js
+	2. Do a git clone
+	3. Move to the folder
+	4. DO npm install
+	5. Start debugging
 
 **what you will learn**
 
